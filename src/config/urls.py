@@ -24,4 +24,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.index),
     path("saludar/", views.saludar),
+    path("parametros/<str:nombre>/<str:apellido>/", views.parametros),
+    path("notas/", views.ver_notas),
 ]
