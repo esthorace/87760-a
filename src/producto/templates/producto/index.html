@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Producto</title>
-    </head>
-    <body>
-        <main>
-            <h1>Categorías de Producto</h1>
-            <ol>
-                <li><a href="{% url 'producto:categoria_list' %}">Listar</a></li>
-            </ol>
-            <a href="{% url 'core:home' %}">Ir a Core</a>
-        </main>
-        <footer>
-            Hecho en el año {{ año }}
-        </footer>
-    </body>
-</html>
+{% extends 'core/base.html' %}
+{% block contenido %}
+    <main>
+        <h2>Categorías de Producto</h2>
+        <ol>
+            <li><a href="{% url 'producto:categoria_list' %}">Listar</a></li>
+        </ol>
+        <a href="{% url 'core:home' %}">Ir a Core</a>
+    </main>
+    <footer>
+        Hecho en el año {{ año }}
+    </footer>
+{% endblock %}

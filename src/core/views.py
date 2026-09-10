@@ -8,7 +8,7 @@ def index(request: HttpRequest) -> HttpResponse:
     from datetime import datetime
 
     datos_a_plantilla = {"titulo": "EducaciónIt", "año": datetime.now(UTC).year}
-    return render(request, "core/index.html", context=datos_a_plantilla)
+    return render(request, "core/pages/index.html", context=datos_a_plantilla)
 
 
 def saludar(request: HttpRequest) -> HttpResponse:
@@ -23,4 +23,4 @@ def parametros(request: HttpResponse, nombre: str, apellido: str) -> HttpRespons
 
 def ver_notas(request: HttpRequest) -> HttpResponse:
     lista_notas: list[int] = [10, 9, 5, 3, 8, 5, 7]
-    return render(request, "core/notas.html", {"notas": lista_notas})
+    return render(request, "core/pages/notas.html", {"notas": lista_notas})

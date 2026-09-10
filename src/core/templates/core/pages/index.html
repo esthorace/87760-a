@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% block contenido %}
+    <main>
+        <ul>
+            <li>Es un framework para crear aplicaciones web</li>
+            <li>Su comunidad es gigante</li>
+            <li><a href="{% url 'core:saludar' %}">Saludar</a></li>
+            <li><a href="{% url 'core:notas' %}">Ver notas</a></li>
+            <br>
+            <li><a href="{% url 'producto:home' %}">App Producto</a></li>
+        </ul>
+    </main>
+    <footer>
+        Hecho en el año {{ año }}
+    </footer>
+{% endblock contenido %}
