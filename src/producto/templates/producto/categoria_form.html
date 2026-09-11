@@ -1,6 +1,10 @@
 {% extends 'core/base.html' %}
 {% block contenido %}
-    <h1>Categorías de Productos - Crear</h1>
+    {% if form.instance.pk %}
+        <h1>Categorías de Productos - Editar</h1>
+    {% else %}
+        <h1>Categorías de Productos - Crear</h1>
+    {% endif %}
     <form method="post">
         {% csrf_token %}
         <table>
@@ -8,4 +12,5 @@
         </table>
         <button type="submit">Enviar datos</button>
     </form>
+    <a href="{% url 'producto:categoria_list' %}">Volver</a>
 {% endblock contenido %}
