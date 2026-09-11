@@ -12,9 +12,9 @@
         <tbody>
             {% for categoria in categorias %}
                 <tr>
-                    <td>{{ categoria.nombre }}</td>
+                    <td>{{ categoria.id }} {{ categoria.nombre }}</td>
                     <td>
-                        <a href="#">Ver</a>
+                        <a href="{% url 'producto:categoria_detail' categoria.id %}">Ver</a>
                         <a href="#">Editar</a>
                         <a href="#">Eliminar</a>
                     </td>

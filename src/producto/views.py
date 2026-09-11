@@ -21,3 +21,8 @@ def categoria_create(request: HttpRequest) -> HttpResponse:
         return redirect("producto:categoria_list")
 
     return render(request, "producto/categoria_form.html", {"form": form})
+
+
+def categoria_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    categoria = Categoria.objects.get(id=pk)
+    return render(request, "producto/categoria_detail.html", {"categoria": categoria})
