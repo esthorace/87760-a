@@ -26,3 +26,22 @@ def categoria_create(request: HttpRequest) -> HttpResponse:
 def categoria_detail(request: HttpRequest, pk: int) -> HttpResponse:
     categoria = Categoria.objects.get(id=pk)
     return render(request, "producto/categoria_detail.html", {"categoria": categoria})
+
+
+def categoria_update(request: HttpRequest, pk: int) -> HttpResponse:
+    categoria = Categoria.objects.get(id=pk)
+    form = CategoriaForm(request.POST or None, instance=categoria)
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        return redirect("producto:categoria_list")
+
+    return render(request, "producto/categoria_form.html", {"form": form})
+
+
+def categoria_delete(request: HttpRequest, pk: int) -> HttpResponse:
+    categoria = Categoria.objects.get(id=pk)
+    if request.method == "POST":
+        categoria.delete()
+        return redirect("producto:categoria_list")
+
+    return render(request, "producto/categoria_confirm_delete.html", {"categoria": categoria})
