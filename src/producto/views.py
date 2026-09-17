@@ -54,6 +54,4 @@ def categoria_delete(request: HttpRequest, pk: int) -> HttpResponse:
             categoria.delete()
             return redirect("producto:categoria_list")
         case _:
-            return render(
-                request, "producto/categoria_confirm_delete.html", {"categoria": categoria}
-            )
+            return render(request, "producto/categoria_confirm_delete.html", {"categoria": categoria})
