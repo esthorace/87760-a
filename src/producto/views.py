@@ -15,11 +15,15 @@ def categoria_list(request: HttpRequest) -> HttpResponse:
 
 
 def categoria_create(request: HttpRequest) -> HttpResponse:
-    form = CategoriaForm(request.POST or None)
-    if request.method == "POST" and form.is_valid():
-        form.save()
-        return redirect("producto:categoria_list")
 
+    match request.method:
+        case "POST":
+            form = CategoriaForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect("producto:categoria_list")
+        case _:
+            form = CategoriaForm()
     return render(request, "producto/categoria_form.html", {"form": form})
 
 
@@ -30,18 +34,26 @@ def categoria_detail(request: HttpRequest, pk: int) -> HttpResponse:
 
 def categoria_update(request: HttpRequest, pk: int) -> HttpResponse:
     categoria = Categoria.objects.get(id=pk)
-    form = CategoriaForm(request.POST or None, instance=categoria)
-    if request.method == "POST" and form.is_valid():
-        form.save()
-        return redirect("producto:categoria_list")
+
+    match request.method:
+        case "POST":
+            form = CategoriaForm(request.POST, instance=categoria)
+            if form.is_valid():
+                form.save()
+                return redirect("producto:categoria_list")
+        case _:
+            form = CategoriaForm(instance=categoria)
 
     return render(request, "producto/categoria_form.html", {"form": form})
 
 
 def categoria_delete(request: HttpRequest, pk: int) -> HttpResponse:
     categoria = Categoria.objects.get(id=pk)
-    if request.method == "POST":
-        categoria.delete()
-        return redirect("producto:categoria_list")
-
-    return render(request, "producto/categoria_confirm_delete.html", {"categoria": categoria})
+    match request.method:
+        case "POST":
+            categoria.delete()
+            return redirect("producto:categoria_list")
+        case _:
+            return render(
+                request, "producto/categoria_confirm_delete.html", {"categoria": categoria}
+            )
