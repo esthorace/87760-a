@@ -1,0 +1,17 @@
+{% extends "core/base.html" %}
+
+{% block contenido %}
+    {% if form.instance.pk %}
+        <h1>Productos - Editar</h1>
+    {% else %}
+        <h1>Productos - Crear</h1>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Enviar datos</button>
+    </form>
+    <a href="{% url 'producto:producto_list' %}">Volver</a>
+{% endblock contenido %}

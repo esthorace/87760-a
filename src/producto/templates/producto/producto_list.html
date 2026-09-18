@@ -1,0 +1,35 @@
+{% extends "core/base.html" %}
+
+{% block contenido %}
+    <h1>Productos - Lista</h1>
+    <a href="{% url 'producto:producto_create' %}">Crear</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in object_list %}
+                <tr>
+                    <td>{{ producto.id }} - {{ producto.nombre }}</td>
+                    <td>{{ producto.categoria|default:"Sin categoría" }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>{{ producto.stock }}</td>
+                    <td>
+                        <a href="{% url 'producto:producto_detail' producto.id %}">Ver</a>
+                        <a href="{% url 'producto:producto_update' producto.id %}">Editar</a>
+                        <a href="{% url 'producto:producto_delete' producto.id %}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <a href="{% url 'producto:home' %}">Volver</a>
+    </div>
+{% endblock contenido %}

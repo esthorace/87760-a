@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+
+{% block contenido %}
+    <h1>Productos - Ver</h1>
+    <ul>
+        <li><strong>Nombre:</strong> {{ producto.nombre }}</li>
+        <li><strong>Categoría:</strong> {{ producto.categoria|default:"Sin categoría" }}</li>
+        <li><strong>Descripción:</strong> {{ producto.descripcion }}</li>
+        <li><strong>Precio:</strong> {{ producto.precio }}</li>
+        <li><strong>Stock:</strong> {{ producto.stock }}</li>
+    </ul>
+    <a href="{% url 'producto:producto_list' %}">Volver</a>
+{% endblock contenido %}
