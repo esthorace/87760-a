@@ -3,6 +3,9 @@
 {% block contenido %}
     <h1>Categorías de Productos - Lista</h1>
     <a href="{% url 'producto:categoria_create' %}">Crear</a>
+    <form method="get">
+        <input type="text" name="busqueda" placeholder="Buscar..." />
+    </form>
     <table border="1">
         <thead>
             <tr>
