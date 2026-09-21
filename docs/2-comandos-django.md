@@ -2,42 +2,40 @@
 
 ## Crear un proyecto
 
-    mkdir src
-    cd src
-    django-admin startproject config .
+    django-admin startproject _config src
 
 ## Comprobar posibles problemas en el proyecto
 
-    python manage.py check
+    python src/manage.py check
 
 ## Ejecutar el servidor
 
-    python manage.py runserver
+    python src/manage.py runserver
 
 ## Crear una aplicación
 
-    python manage.py startapp app
+    python src/manage.py startapp core src/core
 
 ## Preparar archivos de migración
 
-    python manage.py makemigrations
+    python src/manage.py makemigrations
 
 ## Aplicar migraciones a la base de datos
 
-    python manage.py migrate
-
-## Shell interactivo con las configuraciones de Django
-
-    python manage.py shell
+    python src/manage.py migrate
 
 ## Crear superusuario
 
-    python manage.py createsuperuser
+    python src/manage.py createsuperuser
+
+## Shell interactivo con las configuraciones de Django
+
+    python src/manage.py shell
 
 ## Ejecutar pruebas automáticas
 
-    python manage.py test
+    python src/manage.py test
 
 ## Recopilar archivos estáticos
 
-    python manage.py collectstatic
+    python src/manage.py collectstatic
