@@ -1,3 +1,4 @@
+from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models.query import QuerySet
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
@@ -19,22 +20,25 @@ class ProductoList(ListView):
             return Producto.objects.all()
 
 
-class ProductoCreate(CreateView):
+class ProductoCreate(SuccessMessageMixin, CreateView):
     model = Producto
     form_class = ProductoForm
     success_url = reverse_lazy("producto:producto_list")
+    success_message = "El producto se ha creado existosamente"
 
 
-class ProductoUpdate(UpdateView):
+class ProductoUpdate(SuccessMessageMixin, UpdateView):
     model = Producto
     form_class = ProductoForm
     success_url = reverse_lazy("producto:producto_list")
+    success_message = "El producto se ha editado existosamente"
 
 
 class ProductoDetail(DetailView):
     model = Producto
 
 
-class ProductoDelete(DeleteView):
+class ProductoDelete(SuccessMessageMixin, DeleteView):
     model = Producto
     success_url = reverse_lazy("producto:producto_list")
+    success_message = "El producto se ha eliminado existosamente"

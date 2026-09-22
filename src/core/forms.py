@@ -1,11 +1,21 @@
-from typing import Any
-
+from django import forms
 from django.contrib.auth.forms import AuthenticationForm
-from django.http import HttpRequest
+from django.forms.widgets import TextInput
+
+# class CustomAuthenticationForm(AuthenticationForm):
+#     username = forms.CharField(
+#         label="Usuario",
+#         widget=forms.TextInput(
+#             attrs={"class": "form-control", "placeholder": "Ingresa tu nombre de usuario"}
+#         ),
+#     )
+#     password = forms.CharField(
+#         label="Contraseña",
+#         widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "········"}),
+#     )
 
 
 class CustomAuthenticationForm(AuthenticationForm):
-    def __init__(self, request: HttpRequest, *args: Any, **kwargs: Any) -> None:
-        super().__init__(request, *args, **kwargs)
-        self.fields["username"].widget.attrs.update({"placeholder": "Nombre de usuario"})
-        self.fields["password"].widget.attrs.update({"placeholder": "Contraseña"})
+    class Meta:
+        model = AuthenticationForm
+        fields = ("username", "password")

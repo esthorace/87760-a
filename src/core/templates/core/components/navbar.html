@@ -3,6 +3,11 @@
         <li><a href="{% url 'core:home' %}">Inicio</a></li>
         {% if user.is_authenticated %}
             <li><a href="{% url 'producto:home' %}">App Producto</a></li>
+            <li><a href="#">{{ user.username }}</a></li>
+            <form action="{% url 'core:logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
         {% else %}
             <li><a href="{% url 'core:login' %}">Login</a></li>
         {% endif %}
