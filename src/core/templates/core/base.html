@@ -4,11 +4,17 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>La Caja de Pandora</title>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
-        <h1>{{ titulo }}</h1>
+        {% include "core/components/navbar.html" %}
+        {% include "core/components/mensajes2.html" %}
 
         {% block contenido %}
         {% endblock contenido %}
+
+        <footer>
+            Hecho en el año {{ año }}
+        </footer>
     </body>
 </html>

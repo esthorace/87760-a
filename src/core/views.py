@@ -1,7 +1,13 @@
 from datetime import UTC
 
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
+from django.urls import reverse_lazy
+
+from core.forms import CustomAuthenticationForm
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -11,16 +17,12 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, "core/pages/index.html", context=datos_a_plantilla)
 
 
-def saludar(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("Hola desde Django")
+class CustomLoginView(LoginView):
+    template_name = "core/login.html"
+    authentication_form = CustomAuthenticationForm
+    next_page = reverse_lazy("core:home")
+    # redirect_authenticated_user = True
 
-
-def parametros(request: HttpResponse, nombre: str, apellido: str) -> HttpResponse:
-    nombre = nombre.capitalize()
-    apellido = apellido.upper()
-    return HttpResponse(f"<p><strong>{apellido}</strong>, {nombre}</p>")
-
-
-def ver_notas(request: HttpRequest) -> HttpResponse:
-    lista_notas: list[int] = [10, 9, 5, 3, 8, 5, 7]
-    return render(request, "core/pages/notas.html", {"notas": lista_notas})
+    def form_valid(self, form: AuthenticationForm) -> HttpResponse:
+        messages.success(self.request, "Inicio de sesión exitoso")
+        return super().form_valid(form)
