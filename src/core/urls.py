@@ -9,6 +9,7 @@ urlpatterns = [
     path("", views.index, name="home"),
     path("login/", views.CustomLoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(template_name="core/logout.html"), name="logout"),
+    path("register/", views.RegisterView.as_view(), name="register"),
 ]
 
 # urls viejas

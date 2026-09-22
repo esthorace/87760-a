@@ -4,7 +4,10 @@
     <h1>Iniciar sesión</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
         <button type="submit">Iniciar sesión</button>
     </form>
+    <p>
+        ¿No tienes una cuenta? <a href="{% url 'core:register' %}">Registrate aquí</a>
+    </p>
 {% endblock contenido %}

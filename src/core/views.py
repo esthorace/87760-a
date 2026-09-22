@@ -1,13 +1,16 @@
 from datetime import UTC
+from typing import Any
 
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
-from core.forms import CustomAuthenticationForm
+from core.forms import CustomAuthenticationForm, CustomUserCreationForm
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -17,12 +20,14 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, "core/pages/index.html", context=datos_a_plantilla)
 
 
-class CustomLoginView(LoginView):
+class CustomLoginView(SuccessMessageMixin, LoginView):
     template_name = "core/login.html"
     authentication_form = CustomAuthenticationForm
     next_page = reverse_lazy("core:home")
-    # redirect_authenticated_user = True
+    success_message = "Inicio de sesión exitoso"
 
-    def form_valid(self, form: AuthenticationForm) -> HttpResponse:
-        messages.success(self.request, "Inicio de sesión exitoso")
-        return super().form_valid(form)
+
+class RegisterView(CreateView):
+    form_class = CustomUserCreationForm
+    template_name = "core/register.html"
+    success_url = reverse_lazy("core:login")
