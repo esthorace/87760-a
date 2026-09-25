@@ -1,14 +1,60 @@
-<nav>
+<style>
+    .navbar {
+        background-color: #222;
+        padding: 15px 30px;
+    }
+
+    .navbar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .navbar li {
+        margin: 0;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 10px;
+    }
+
+    .navbar a:hover {
+        color: #ddd;
+        text-decoration: underline;
+    }
+
+    .navbar button {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .navbar button:hover {
+        background-color: #bb2d3b;
+    }
+</style>
+<nav class="navbar">
     <ul>
         <li><a href="{% url 'core:home' %}">Inicio</a></li>
         <li><a href="{% url 'core:about' %}">Nosotros</a></li>
         {% if user.is_authenticated %}
             <li><a href="{% url 'producto:home' %}">App Producto</a></li>
             <li><a href="#">{{ user.username }}</a></li>
-            <form action="{% url 'core:logout' %}" method="post">
-                {% csrf_token %}
-                <button type="submit">Logout</button>
-            </form>
+            <li>
+                <form action="{% url 'core:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
         {% else %}
             <li><a href="{% url 'core:login' %}">Login</a></li>
         {% endif %}

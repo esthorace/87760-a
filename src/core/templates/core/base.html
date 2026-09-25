@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -5,14 +7,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>La Caja de Pandora</title>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="{% static 'core/style.css' %}" />
     </head>
     <body>
         {% include "core/components/navbar.html" %}
         {% include "core/components/mensajes2.html" %}
-
-        {% block contenido %}
-        {% endblock contenido %}
-
+        <main>
+            {% block contenido %}
+            {% endblock contenido %}
+        </main>
         <footer>
             Hecho en el año {{ año }}
         </footer>
