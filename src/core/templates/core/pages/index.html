@@ -1,8 +1,11 @@
 {% extends "core/base.html" %}
 
+{% load static %}
+
 {% block contenido %}
     <h1>La Caja de Pandora</h1>
     <main>
+        <img src="{% static 'core/imagen.jpeg' %}" alt="" height="200" />
         <ul>
             <li>Es un framework para crear aplicaciones web</li>
             <li>Su comunidad es gigante</li>

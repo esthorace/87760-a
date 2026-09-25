@@ -1,6 +1,7 @@
 <nav>
     <ul>
         <li><a href="{% url 'core:home' %}">Inicio</a></li>
+        <li><a href="{% url 'core:about' %}">Nosotros</a></li>
         {% if user.is_authenticated %}
             <li><a href="{% url 'producto:home' %}">App Producto</a></li>
             <li><a href="#">{{ user.username }}</a></li>

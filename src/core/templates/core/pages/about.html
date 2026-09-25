@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+{% block contenido %}
+    <div style="text-align: center;">
+        <h1>Acerca de mí</h1>
+        <p>Me llamo Esteban</p>
+        <img src="{% static 'core/perfil.png' %}"
+             alt="imagen genérica de perfil"
+             height="200" />
+        <p>LinkedIn: <a href="https://www.linkedin.com/" target="_blank">https://www.linkedin.com/</a></p>
+        <a href="{% url 'core:home' %}">Inicio</a>
+    </div>
+{% endblock contenido %}
