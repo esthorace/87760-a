@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_not_required
 from django.contrib.auth.views import LogoutView
 from django.urls import path
 from django.views.generic import TemplateView
@@ -11,7 +12,11 @@ urlpatterns = [
     path("login/", views.CustomLoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(template_name="core/logout.html"), name="logout"),
     path("register/", views.RegisterView.as_view(), name="register"),
-    path("about/", TemplateView.as_view(template_name="core/pages/about.html"), name="about"),
+    path(
+        "about/",
+        login_not_required(TemplateView.as_view(template_name="core/pages/about.html")),
+        name="about",
+    ),
 ]
 
 # urls viejas

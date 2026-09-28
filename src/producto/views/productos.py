@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models.query import QuerySet
 from django.urls import reverse_lazy
@@ -7,7 +8,7 @@ from producto.forms import ProductoForm
 from producto.models import Producto
 
 
-class ProductoList(ListView):
+class ProductoList(LoginRequiredMixin, ListView):
     model = Producto
     # template_name = "producto/producto_list.html"
     # context_object_name = "productos"
