@@ -7,6 +7,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView
 
 from core.forms import CustomAuthenticationForm, CustomUserCreationForm
@@ -28,6 +29,7 @@ class CustomLoginView(SuccessMessageMixin, LoginView):
     success_message = "Inicio de sesión exitoso"
 
 
+@method_decorator(login_not_required, name="dispatch")
 class RegisterView(CreateView):
     form_class = CustomUserCreationForm
     template_name = "core/register.html"
