@@ -5,19 +5,20 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>La Caja de Pandora</title>
+        <meta name="description"
+              content="La Esquina — despensa de barrio con alimentos, bebidas, golosinas, fiambres, pan y artículos de limpieza." />
+        <title>La Esquina | Tu despensa de siempre</title>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="{% static 'core/style.css' %}" />
+        <style></style>
     </head>
     <body>
         {% include "core/components/navbar.html" %}
         {% include "core/components/mensajes2.html" %}
-        <main>
-            {% block contenido %}
-            {% endblock contenido %}
-        </main>
-        <footer>
-            Hecho en el año {{ año }}
-        </footer>
+
+        {% block contenido %}
+        {% endblock contenido %}
+
+        {% include "core/components/footer.html" %}
     </body>
 </html>

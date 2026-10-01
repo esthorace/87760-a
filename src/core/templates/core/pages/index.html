@@ -1,15 +1,177 @@
 {% extends "core/base.html" %}
 
-{% load static %}
-
 {% block contenido %}
-    <h1>La Caja de Pandora</h1>
-    <main>
-        <img src="{% static 'core/imagen.jpeg' %}" alt="" height="200" />
-        <ul>
-            <li>Es un framework para crear aplicaciones web</li>
-            <li>Su comunidad es gigante</li>
-            <br />
-        </ul>
+    <main id="inicio">
+        <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <div class="eyebrow">De barrio · Cerca · Simple</div>
+                    <h1>
+                        Lo que buscás,
+                        <span class="accent">a la vuelta.</span>
+                    </h1>
+                    <p>
+                        La despensa de siempre, con una vuelta más moderna.
+                        Alimentos, bebidas, golosinas, fiambres, pan y productos para el hogar,
+                        todo cerca y sin complicaciones.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#productos">Ver productos</a>
+                        <a class="btn btn-secondary" href="#contacto">Cómo llegar</a>
+                    </div>
+                    <div class="hero-note">
+                        <span class="note-dot"></span>
+                        Abierto hoy · Atención cercana de verdad
+                    </div>
+                </div>
+                <div class="store-card" aria-label="Ilustración de la despensa">
+                    <div class="floating top">🥖 Pan fresco</div>
+                    <div class="floating right">🧃 Bien frío</div>
+                    <div class="floating bottom">💛 De confianza</div>
+                    <div class="shop-front">
+                        <div class="shop-sign">LA ESQUINA</div>
+                        <div class="shop-window">
+                            <div class="window-left">
+                                <div class="shelf one"></div>
+                                <div class="shelf two"></div>
+                                <div class="bottle b1"></div>
+                                <div class="bottle b2"></div>
+                                <div class="bottle b3"></div>
+                                <div class="bottle b4"></div>
+                            </div>
+                            <div class="window-right">
+                                <div class="shelf one"></div>
+                                <div class="shelf two"></div>
+                                <div class="shelf" style="bottom: 57%;"></div>
+                            </div>
+                        </div>
+                        <div class="counter">
+                            <div class="bread">🥖</div>
+                            <div class="ham">🧀</div>
+                            <div class="basket">🧺</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="productos">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <div class="eyebrow">Todo en un mismo lugar</div>
+                        <h2>Lo de todos los días.</h2>
+                    </div>
+                    <p>
+                        Esa compra rápida antes de volver a casa, el antojo de la tarde
+                        o eso que justo se terminó. Entrás, elegís y seguís.
+                    </p>
+                </div>
+                <div class="category-grid">
+                    <a class="category" href="#destacados">
+                        <span class="emoji">🥫</span>
+                        <strong>Almacén</strong>
+                        <small>Secos, conservas y básicos</small>
+                    </a>
+                    <a class="category" href="#destacados">
+                        <span class="emoji">🥤</span>
+                        <strong>Bebidas</strong>
+                        <small>Frías y para llevar</small>
+                    </a>
+                    <a class="category" href="#destacados">
+                        <span class="emoji">🍫</span>
+                        <strong>Golosinas</strong>
+                        <small>Un gustito nunca sobra</small>
+                    </a>
+                    <a class="category" href="#destacados">
+                        <span class="emoji">🧀</span>
+                        <strong>Fiambres</strong>
+                        <small>Para el picoteo y el sándwich</small>
+                    </a>
+                    <a class="category" href="#destacados">
+                        <span class="emoji">🧼</span>
+                        <strong>Limpieza</strong>
+                        <small>Lo esencial para la casa</small>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="destacados">
+            <div class="container">
+                <div class="featured">
+                    <div class="section-head">
+                        <div>
+                            <div class="eyebrow">Siempre sale</div>
+                            <h2>Los favoritos del barrio.</h2>
+                        </div>
+                        <p>
+                            Una selección de esas cosas que suelen aparecer en la lista
+                            una y otra vez.
+                        </p>
+                    </div>
+                    <div class="product-grid">
+                        <article class="product">
+                            <div class="product-art">🍪</div>
+                            <div class="product-title">Galletitas</div>
+                            <div class="product-copy">Para acompañar el mate.</div>
+                        </article>
+                        <article class="product">
+                            <div class="product-art">🥛</div>
+                            <div class="product-title">Lácteos</div>
+                            <div class="product-copy">Desayuno resuelto.</div>
+                        </article>
+                        <article class="product">
+                            <div class="product-art">🥤</div>
+                            <div class="product-title">Bebidas frías</div>
+                            <div class="product-copy">Heladera lista para vos.</div>
+                        </article>
+                        <article class="product">
+                            <div class="product-art">🍬</div>
+                            <div class="product-title">Golosinas</div>
+                            <div class="product-copy">Para cortar la semana.</div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="por-que">
+            <div class="container">
+                <div class="why-grid">
+                    <div class="why-intro">
+                        <div class="scribble">Más que comprar</div>
+                        <h2>La tienda que ya conocés.</h2>
+                        <p>Rápida para resolver, cercana para conversar y sencilla para volver.</p>
+                    </div>
+                    <div class="benefits">
+                        <div class="benefit">
+                            <span class="benefit-icon">⚡</span>
+                            <strong>Compra rápida</strong>
+                            <p>Lo necesario, sin recorrer pasillos interminables.</p>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-icon">📍</span>
+                            <strong>Está cerca</strong>
+                            <p>Una parte del barrio que podés resolver caminando.</p>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-icon">🙂</span>
+                            <strong>Atención humana</strong>
+                            <p>Acá todavía hay alguien que te conoce y te saluda.</p>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-icon">🛍️</span>
+                            <strong>Lo esencial</strong>
+                            <p>Alimentos, bebidas, fiambres, pan y hogar en un solo lugar.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="seller-cta" id="acceder">
+                    <div>
+                        <h3>¿Sos quien atiende la despensa?</h3>
+                        <p>Accedé para gestionar tu negocio desde este mismo lugar.</p>
+                    </div>
+                    <a class="btn btn-primary" href="login.html">Acceder como vendedor →</a>
+                </div>
+            </div>
+        </section>
     </main>
 {% endblock contenido %}
