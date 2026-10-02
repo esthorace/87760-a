@@ -1,0 +1,34 @@
+{% extends "core/base.html" %}
+
+{% block contenido %}
+    <h1>Vendedores - Lista</h1>
+    <a href="{% url 'producto:vendedor_create' %}">Crear</a>
+    <form method="get">
+        <input type="text" name="busqueda" placeholder="Buscar..." />
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vendedor in object_list %}
+                <tr>
+                    <td>{{ vendedor.id }} - {{ vendedor.user.username }}</td>
+                    <td>{{ vendedor.telefono|default:"Sin teléfono" }}</td>
+                    <td>
+                        <a href="{% url 'producto:vendedor_detail' vendedor.id %}">Ver</a>
+                        <a href="{% url 'producto:vendedor_update' vendedor.id %}">Editar</a>
+                        <a href="{% url 'producto:vendedor_delete' vendedor.id %}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <a href="{% url 'producto:home' %}">Volver</a>
+    </div>
+{% endblock contenido %}

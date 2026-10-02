@@ -1,0 +1,17 @@
+{% extends "core/base.html" %}
+
+{% block contenido %}
+    <h1>Vendedores - Ver</h1>
+    <ul>
+        <li><strong>Usuario:</strong> {{ vendedor.user.username }}</li>
+        <li><strong>Teléfono:</strong> {{ vendedor.telefono|default:"Sin teléfono" }}</li>
+        <li><strong>Imagen de Perfil:</strong>
+            {% if vendedor.imagen_perfil %}
+                <img src="{{ vendedor.imagen_perfil.url }}" alt="Imagen de perfil" width="100" />
+            {% else %}
+                Sin imagen
+            {% endif %}
+        </li>
+    </ul>
+    <a href="{% url 'producto:vendedor_list' %}">Volver</a>
+{% endblock contenido %}

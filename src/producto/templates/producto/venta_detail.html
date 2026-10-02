@@ -1,0 +1,12 @@
+{% extends "core/base.html" %}
+
+{% block contenido %}
+    <h1>Ventas - Ver</h1>
+    <ul>
+        <li><strong>Vendedor:</strong> {{ venta.vendedor.user.username }}</li>
+        <li><strong>Producto:</strong> {{ venta.producto }}</li>
+        <li><strong>Cantidad:</strong> {{ venta.cantidad }}</li>
+        <li><strong>Fecha:</strong> {{ venta.fecha }}</li>
+    </ul>
+    <a href="{% url 'producto:venta_list' %}">Volver</a>
+{% endblock contenido %}

@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+
+{% block contenido %}
+    <h1>Vendedores - Eliminar</h1>
+    <p>¿Estás seguro de eliminar "{{ vendedor }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sí, confirmo</button>
+    </form>
+    <a href="{% url 'producto:vendedor_list' %}">Volver</a>
+{% endblock contenido %}

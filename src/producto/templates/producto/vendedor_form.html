@@ -1,0 +1,17 @@
+{% extends "core/base.html" %}
+
+{% block contenido %}
+    {% if form.instance.pk %}
+        <h1>Vendedores - Editar</h1>
+    {% else %}
+        <h1>Vendedores - Crear</h1>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Enviar datos</button>
+    </form>
+    <a href="{% url 'producto:vendedor_list' %}">Volver</a>
+{% endblock contenido %}
