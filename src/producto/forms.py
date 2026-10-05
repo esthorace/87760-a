@@ -43,3 +43,18 @@ class VentaForm(forms.ModelForm):
         if cantidad is not None and cantidad <= 0:
             raise forms.ValidationError("La cantidad debe ser mayor a 0")
         return cantidad
+
+    def clean(self):
+        cleaned_data = super().clean()
+        producto = cleaned_data.get("producto")
+        cantidad = cleaned_data.get("cantidad")
+        if producto is None or cantidad is None:
+            return cleaned_data
+
+        stock_disponible = producto.stock
+        if self.instance.pk and self.instance.producto_id == producto.pk:
+            stock_disponible += int(self.instance.cantidad)
+
+        if cantidad > stock_disponible:
+            self.add_error("producto", "El producto no tiene stock suficiente")
+        return cleaned_data
