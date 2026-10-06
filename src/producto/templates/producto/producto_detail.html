@@ -1,13 +1,37 @@
 {% extends "core/base.html" %}
 
 {% block contenido %}
-    <h1>Productos - Ver</h1>
-    <ul>
-        <li><strong>Nombre:</strong> {{ producto.nombre }}</li>
-        <li><strong>Categoría:</strong> {{ producto.categoria|default:"Sin categoría" }}</li>
-        <li><strong>Descripción:</strong> {{ producto.descripcion }}</li>
-        <li><strong>Precio:</strong> {{ producto.precio }}</li>
-        <li><strong>Stock:</strong> {{ producto.stock }}</li>
-    </ul>
-    <a href="{% url 'producto:producto_list' %}">Volver</a>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body p-4 p-md-5">
+                    <div class="text-center mb-4">
+                        <div class="eyebrow">Detalle</div>
+                        <h1 class="h3 fw-bold mb-1" style="color: var(--ink);">Producto</h1>
+                        <p class="text-muted mb-0" style="color: var(--ink-soft) !important;">Información completa</p>
+                    </div>
+
+                    <dl class="row mb-0 detail-list">
+                        <dt class="col-sm-4">Nombre</dt>
+                        <dd class="col-sm-8">{{ producto.nombre }}</dd>
+                        <dt class="col-sm-4">Categoría</dt>
+                        <dd class="col-sm-8">{{ producto.categoria|default:"Sin categoría" }}</dd>
+                        <dt class="col-sm-4">Descripción</dt>
+                        <dd class="col-sm-8">{{ producto.descripcion|default:"—" }}</dd>
+                        <dt class="col-sm-4">Precio</dt>
+                        <dd class="col-sm-8">{{ producto.precio }}</dd>
+                        <dt class="col-sm-4">Stock</dt>
+                        <dd class="col-sm-8">{{ producto.stock }}</dd>
+                    </dl>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <a href="{% url 'producto:producto_list' %}" class="btn btn-outline-secondary btn-lg fw-semibold rounded-3 py-2"
+                           style="border-color: var(--line); color: var(--ink);">← Volver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock contenido %}

@@ -1,14 +1,53 @@
 {% extends "core/base.html" %}
 
 {% block contenido %}
-    <main>
-        <h2>Productos</h2>
-        <ol>
-            <li><a href="{% url 'producto:categoria_list' %}">Categorías de Productos</a></li>
-            <li><a href="{% url 'producto:producto_list' %}">Productos</a></li>
-            <li><a href="{% url 'producto:vendedor_list' %}">Vendedores</a></li>
-            <li><a href="{% url 'producto:venta_list' %}">Ventas</a></li>
-        </ol>
-        <a href="{% url 'core:home' %}">Home</a>
-    </main>
+<div class="container py-5">
+    <div class="text-center mb-4">
+        <div class="eyebrow">Panel de gestión</div>
+        <h1 class="fw-bold mb-1" style="color: var(--ink);">Productos</h1>
+        <p class="mb-0" style="color: var(--ink-soft);">Gestioná tu despensa desde acá.</p>
+    </div>
+    <div class="row g-3 justify-content-center">
+        <div class="col-12 col-md-6 col-lg-3">
+            <a href="{% url 'producto:categoria_list' %}" class="card h-100 border-0 rounded-4 text-decoration-none dashboard-card">
+                <div class="card-body p-4">
+                    <div class="dashboard-icon">🗂️</div>
+                    <h2 class="h6 fw-bold mb-1" style="color: var(--ink);">Categorías</h2>
+                    <p class="small mb-0" style="color: var(--ink-soft);">Organizá tus productos</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <a href="{% url 'producto:producto_list' %}" class="card h-100 border-0 rounded-4 text-decoration-none dashboard-card">
+                <div class="card-body p-4">
+                    <div class="dashboard-icon">🥫</div>
+                    <h2 class="h6 fw-bold mb-1" style="color: var(--ink);">Productos</h2>
+                    <p class="small mb-0" style="color: var(--ink-soft);">Almacén, bebidas y más</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <a href="{% url 'producto:vendedor_list' %}" class="card h-100 border-0 rounded-4 text-decoration-none dashboard-card">
+                <div class="card-body p-4">
+                    <div class="dashboard-icon">🧑‍💼</div>
+                    <h2 class="h6 fw-bold mb-1" style="color: var(--ink);">Vendedores</h2>
+                    <p class="small mb-0" style="color: var(--ink-soft);">Quiénes atienden</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <a href="{% url 'producto:venta_list' %}" class="card h-100 border-0 rounded-4 text-decoration-none dashboard-card">
+                <div class="card-body p-4">
+                    <div class="dashboard-icon">🧾</div>
+                    <h2 class="h6 fw-bold mb-1" style="color: var(--ink);">Ventas</h2>
+                    <p class="small mb-0" style="color: var(--ink-soft);">Historial de ventas</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <a href="{% url 'core:home' %}" class="btn btn-outline-secondary rounded-3 px-4"
+           style="border-color: var(--line); color: var(--ink);">← Volver al inicio</a>
+    </div>
+</div>
 {% endblock %}
